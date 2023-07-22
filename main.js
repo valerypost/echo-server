@@ -17,7 +17,7 @@ const server = http.createServer((req, res) => {
     for( header in req.headers) {
         res.write('\n\t' + header +': '+ ""+req.headers[header]);
     }
-    res.end("\nHello World");
+    res.end("");
 });
 
 server.listen(port, hostname, () => {
