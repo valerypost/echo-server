@@ -1,7 +1,9 @@
 const http = require("http");
 
 const hostname = "0.0.0.0";
-const port = 3000;
+//const port = 3000;
+const port = (process.argv[2] || '3000');
+const servername = (process.argv[3] || 'default');
 
 const server = http.createServer((req, res) => {
     console.log(`\n${req.method} ${req.url}`);
@@ -13,6 +15,7 @@ const server = http.createServer((req, res) => {
 
     res.statusCode = 200;
     res.setHeader("Content-Type", "text/plain");
+    res.write('\n'+servername);
     res.write('\n'+req.method +req.url);
     for( header in req.headers) {
         res.write('\n\t' + header +': '+ ""+req.headers[header]);
